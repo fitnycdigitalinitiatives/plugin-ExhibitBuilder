@@ -139,7 +139,11 @@ class ExhibitLayout
         }
 
         $defaultLayouts = array(
-            'file-text' => array(
+            'exhibit-openseadragon' => array(
+                'name' => __('OpenSeadraon'),
+                'description' => __('Features OpenSeadragon image view and text')
+            ),
+			'file-text' => array(
                 'name' => __('File with Text'),
                 'description' => __('Default layout features files justified to left or right with text displaying to the opposite side')
             ),
