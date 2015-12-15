@@ -10,7 +10,7 @@ $captionPosition = isset($options['captions-position'])
     : 'center';
 ?>
 <div class="row">
-	<div class="col-sm-3 col-sm-offset-1">
+	<div class="col-sm-2">
 	<h1><?php echo metadata('exhibit_page', 'title'); ?></h1>
 	<?php echo $text; ?>
 	</div>
