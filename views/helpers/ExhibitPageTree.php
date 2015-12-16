@@ -58,7 +58,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
     protected function _renderPageBranch($page, $currentPage, $ancestorIds)
     {
         if ($currentPage && $page->id === $currentPage->id) {
-            $html = '<li class="current">';
+            $html = '<li class="active">';
         } else if ($ancestorIds && isset($ancestorIds[$page->id])) {
             $html = '<li class="parent">';
         } else {
@@ -85,7 +85,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening()
     {
-        return '<ul>';
+        return '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
     }
 
     /**
