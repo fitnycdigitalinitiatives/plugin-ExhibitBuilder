@@ -42,7 +42,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
         foreach ($pages[0] as $topPage) {
             $html .= $this->_renderPageBranch($topPage, $currentPage, $ancestorIds);
         }
-        $html .= '</div>';
+        $html .= '</ul>';
         return $html;
     }
 
@@ -58,21 +58,21 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
     protected function _renderPageBranch($page, $currentPage, $ancestorIds)
     {
         if ($currentPage && $page->id === $currentPage->id) {
-            $html = '<a class="list-group-item active" href="';
+            $html = '<li class="list-group-item active">';
         } else if ($ancestorIds && isset($ancestorIds[$page->id])) {
-            $html = '<a class="list-group-item parent" href="';
+            $html = '<li class="list-group-item parent">';
         } else {
-            $html = '<a class="list-group-item" href="';
+            $html = '<li class="list-group-item">';
         }
         
-        $html .= exhibit_builder_exhibit_uri($this->_exhibit, $page) . '">'
+        $html .= '<a href="' . exhibit_builder_exhibit_uri($this->_exhibit, $page) . '">'
               . metadata($page, 'title') .'</a>';
         if (isset($this->_pages[$page->id])) {
-            $html .= '<div class="list-group">';
+            $html .= '<ul>';
             foreach ($this->_pages[$page->id] as $childPage) {
                 $html .= $this->_renderPageBranch($childPage, $currentPage, $ancestorIds);
             }
-            $html .= '</div>';
+            $html .= '</ul>';
         }
         $html .= '</li>';
         return $html;
@@ -85,7 +85,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening()
     {
-        return '<div class="list-group">';
+        return '<ul class="list-group">';
     }
 
     /**
