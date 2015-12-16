@@ -58,11 +58,11 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
     protected function _renderPageBranch($page, $currentPage, $ancestorIds)
     {
         if ($currentPage && $page->id === $currentPage->id) {
-            $html = '<li class="list-group-item active">';
+            $html = '<li class="current">';
         } else if ($ancestorIds && isset($ancestorIds[$page->id])) {
-            $html = '<li class="list-group-item parent">';
+            $html = '<li class="parent">';
         } else {
-            $html = '<li class="list-group-item">';
+            $html = '<li>';
         }
         
         $html .= '<a href="' . exhibit_builder_exhibit_uri($this->_exhibit, $page) . '">'
@@ -85,7 +85,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening()
     {
-        return '<ul class="list-group">';
+        return '<ul>';
     }
 
     /**
