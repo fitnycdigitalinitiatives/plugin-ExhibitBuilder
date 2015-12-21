@@ -13,6 +13,20 @@ $captionPosition = isset($options['captions-position'])
 		<div class="col-sm-3">
 		<h1><?php echo metadata('exhibit_page', 'title'); ?></h1>
 		<?php echo $text; ?>
+		<nav>
+			<ul class="pager">
+				<?php if ($prevLink = exhibit_builder_link_to_previous_page('&laquo; Prev')): ?>
+				<li class="previous">
+					<?php echo $prevLink; ?>
+				</li>
+				<?php endif; ?>
+				<?php if ($nextLink = exhibit_builder_link_to_next_page('Next &raquo;')): ?>
+				<li class="next">
+					<?php echo $nextLink; ?>
+				</li>
+				<?php endif; ?>			
+			</ul>
+		</nav>
 		</div>
 		<div class="col-sm-9">
 		<?php foreach ($attachments as $attachment): ?>
