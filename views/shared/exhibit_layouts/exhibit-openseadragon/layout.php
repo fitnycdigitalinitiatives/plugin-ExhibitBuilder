@@ -29,9 +29,32 @@ $captionPosition = isset($options['captions-position'])
 		</nav>
 		</div>
 		<div class="col-sm-9">
-		<?php foreach ($attachments as $attachment): ?>
-			<?php $file = $attachment->getFile(); ?>
-			<?php echo $this->openseadragon($file); ?>
-		<?php endforeach; ?>
+			<div id="gallery">
+				<div class="tab-content">
+					<?php $id == 1; ?>
+					<?php foreach ($attachments as $attachment): ?>
+						<?php $file = $attachment->getFile(); ?>
+						<div role="tabpanel" class="tab-pane" id="tab<?=$id?>">
+							<?php echo $this->openseadragon($file); ?>
+							<div class="caption">
+								<?php echo $attachment['caption']; ?>
+							</div>
+						</div>
+						<?php $id++; ?>
+					<?php endforeach; ?>
+				</div>
+				<ul class="nav nav-tabs" role="tablist">
+					<?php $tab_id == 1; ?>
+					<?php foreach ($attachments as $attachment): ?>
+						<?php $file = $attachment->getFile(); ?>
+						<li role="presentation">
+							<a href="#tab<?=$tab_id?>" aria-controls="home" role="tab" data-toggle="tab">
+								<?php file_markup($file, array('imageSize' => 'square_thumbnail')); ?>
+							</a>
+						</li>
+						<?php $tab_id++; ?>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 		</div>
 	</div>
