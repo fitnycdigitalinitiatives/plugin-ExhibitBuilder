@@ -49,7 +49,7 @@ $captionPosition = isset($options['captions-position'])
 						<?php $file = $attachment->getFile(); ?>
 						<li role="presentation">
 							<a href="#tab<?=$tab_id?>" aria-controls="home" role="tab" data-toggle="tab">
-								<?php file_markup($file, array('imageSize' => 'square_thumbnail'), null); ?>
+								<?php echo file_image('square_thumbnail', array(), $file) ?>
 							</a>
 						</li>
 						<?php $tab_id++; ?>
