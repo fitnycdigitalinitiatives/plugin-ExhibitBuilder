@@ -38,7 +38,7 @@ $captionPosition = isset($options['captions-position'])
 						<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
-								<?php echo $caption; ?>
+								<small><?php echo $caption; ?></small>
 							</div>
 							<?php endif; ?>
 				<?php endforeach; ?>
@@ -55,7 +55,7 @@ $captionPosition = isset($options['captions-position'])
 							<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
-								<?php echo $caption; ?>
+								<small><?php echo $caption; ?></small>
 							</div>
 							<?php endif; ?>
 						</div>
@@ -65,7 +65,7 @@ $captionPosition = isset($options['captions-position'])
 							<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
-								<?php echo $caption; ?>
+								<small><?php echo $caption; ?></small>
 							</div>
 							<?php endif; ?>
 						</div>
