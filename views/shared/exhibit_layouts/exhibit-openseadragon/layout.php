@@ -29,17 +29,38 @@ $captionPosition = isset($options['captions-position'])
 		</nav>
 		</div>
 		<div class="col-sm-9">
-			<div id="gallery">
+		<?php $count = count($attachments); ?>
+		<?php if ($count == 1): ?>
+			<div class="viewer">
+				<?php foreach ($attachments as $attachment): ?>
+					<?php $file = $attachment->getFile(); ?>
+						<?php echo $this->openseadragon($file); ?>
+						<div class="caption">
+							<?php echo $attachment['caption']; ?>
+						</div>
+				<?php endforeach; ?>
+			</div>
+		<?php else: ?>
+			<div id="viewer">
 				<div class="tab-content">
 					<?php $id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
 						<?php $file = $attachment->getFile(); ?>
+						<?php if ($id == 1): ?>
+						<div role="tabpanel" class="tab-pane active" id="tab<?=$id?>">
+							<?php echo $this->openseadragon($file); ?>
+							<div class="caption">
+								<?php echo $attachment['caption']; ?>
+							</div>
+						</div>
+						<?php else: ?>
 						<div role="tabpanel" class="tab-pane" id="tab<?=$id?>">
 							<?php echo $this->openseadragon($file); ?>
 							<div class="caption">
 								<?php echo $attachment['caption']; ?>
 							</div>
 						</div>
+						<?php endif; ?>
 						<?php $id++; ?>
 					<?php endforeach; ?>
 				</div>
@@ -48,13 +69,20 @@ $captionPosition = isset($options['captions-position'])
 					<?php foreach ($attachments as $attachment): ?>
 						<?php $file = $attachment->getFile(); ?>
 						<li role="presentation">
+							<?php if ($tab_id == 1): ?>
+							<a href="#tab<?=$tab_id?>" class ="active" aria-controls="home" role="tab" data-toggle="tab">
+								<?php echo file_image('square_thumbnail', array(), $file) ?>
+							</a>
+							<?php else: ?>
 							<a href="#tab<?=$tab_id?>" aria-controls="home" role="tab" data-toggle="tab">
 								<?php echo file_image('square_thumbnail', array(), $file) ?>
 							</a>
+							<?php endif; ?>
 						</li>
 						<?php $tab_id++; ?>
 					<?php endforeach; ?>
 				</ul>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
