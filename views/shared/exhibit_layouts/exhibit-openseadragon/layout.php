@@ -31,7 +31,7 @@ $captionPosition = isset($options['captions-position'])
 		<div class="col-sm-9">
 		<?php $count = count($attachments); ?>
 		<?php if ($count == 1): ?>
-			<div class="viewer">
+			<div id="viewer">
 				<?php foreach ($attachments as $attachment): ?>
 					<?php $file = $attachment->getFile(); ?>
 						<?php echo $this->openseadragon($file); ?>
