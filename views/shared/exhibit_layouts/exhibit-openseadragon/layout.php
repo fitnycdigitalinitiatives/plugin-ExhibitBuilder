@@ -31,7 +31,7 @@ $captionPosition = isset($options['captions-position'])
 		<div class="col-sm-9">
 			<div id="gallery">
 				<div class="tab-content">
-					<?php $id == 1; ?>
+					<?php $id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
 						<?php $file = $attachment->getFile(); ?>
 						<div role="tabpanel" class="tab-pane" id="tab<?=$id?>">
@@ -44,7 +44,7 @@ $captionPosition = isset($options['captions-position'])
 					<?php endforeach; ?>
 				</div>
 				<ul class="nav nav-tabs" role="tablist">
-					<?php $tab_id == 1; ?>
+					<?php $tab_id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
 						<?php $file = $attachment->getFile(); ?>
 						<li role="presentation">
