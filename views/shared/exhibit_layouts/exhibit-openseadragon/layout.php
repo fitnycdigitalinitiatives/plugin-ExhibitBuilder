@@ -68,16 +68,14 @@ $captionPosition = isset($options['captions-position'])
 					<?php $tab_id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
 						<?php $file = $attachment->getFile(); ?>
+						<?php if ($tab_id == 1): ?>
+						<li class="active" role="presentation">
+						<?php else: ?>
 						<li role="presentation">
-							<?php if ($tab_id == 1): ?>
-							<a href="#tab<?=$tab_id?>" class ="active" aria-controls="home" role="tab" data-toggle="tab">
-								<?php echo file_image('square_thumbnail', array(), $file) ?>
-							</a>
-							<?php else: ?>
+						<?php endif; ?>
 							<a href="#tab<?=$tab_id?>" aria-controls="home" role="tab" data-toggle="tab">
 								<?php echo file_image('square_thumbnail', array(), $file) ?>
 							</a>
-							<?php endif; ?>
 						</li>
 						<?php $tab_id++; ?>
 					<?php endforeach; ?>
