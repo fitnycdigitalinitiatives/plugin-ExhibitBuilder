@@ -35,9 +35,12 @@ $captionPosition = isset($options['captions-position'])
 				<?php foreach ($attachments as $attachment): ?>
 					<?php $file = $attachment->getFile(); ?>
 						<?php echo $this->openseadragon($file); ?>
-						<div class="caption">
-							<?php echo $attachment['caption']; ?>
-						</div>
+						<?php $caption = $attachment['caption']; ?>
+							<?php if ($caption): ?>
+							<div class="caption">
+								<?php echo $caption; ?>
+							</div>
+							<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
 		<?php else: ?>
@@ -49,9 +52,12 @@ $captionPosition = isset($options['captions-position'])
 						<?php if ($id == 1): ?>
 						<div role="tabpanel" class="tab-pane active" id="tab<?=$id?>">
 							<?php echo $this->openseadragon($file); ?>
+							<?php $caption = $attachment['caption']; ?>
+							<?php if ($caption): ?>
 							<div class="caption">
-								<?php echo $attachment['caption']; ?>
+								<?php echo $caption; ?>
 							</div>
+							<?php endif; ?>
 						</div>
 						<?php else: ?>
 						<div role="tabpanel" class="tab-pane" id="tab<?=$id?>">
