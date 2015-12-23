@@ -16,18 +16,12 @@ $captionPosition = isset($options['captions-position'])
 			<?php echo $text; ?>
 		</div>
 		<nav>
-			<ul class="pager">
-				<?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Prev')): ?>
-				<li class="previous">
+				<?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Prev', array('type' => 'button', 'class' => 'btn btn-default pull-left previous'))): ?>
 					<?php echo $prevLink; ?>
-				</li>
 				<?php endif; ?>
-				<?php if ($nextLink = exhibit_builder_link_to_next_page('Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>')): ?>
-				<li class="next">
+				<?php if ($nextLink = exhibit_builder_link_to_next_page('Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default pull-right next'))): ?>
 					<?php echo $nextLink; ?>
-				</li>
-				<?php endif; ?>			
-			</ul>
+				<?php endif; ?>
 		</nav>
 		</div>
 		<div class="col-sm-9">
