@@ -12,15 +12,17 @@ $captionPosition = isset($options['captions-position'])
 	<div class="row">	
 		<div class="col-sm-3">
 		<h1><?php echo metadata('exhibit_page', 'title'); ?></h1>
-		<?php echo $text; ?>
+		<div class="text-justify">
+			<?php echo $text; ?>
+		</div>
 		<nav>
 			<ul class="pager">
-				<?php if ($prevLink = exhibit_builder_link_to_previous_page('&laquo; Prev')): ?>
+				<?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Prev')): ?>
 				<li class="previous">
 					<?php echo $prevLink; ?>
 				</li>
 				<?php endif; ?>
-				<?php if ($nextLink = exhibit_builder_link_to_next_page('Next &raquo;')): ?>
+				<?php if ($nextLink = exhibit_builder_link_to_next_page('Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>')): ?>
 				<li class="next">
 					<?php echo $nextLink; ?>
 				</li>
