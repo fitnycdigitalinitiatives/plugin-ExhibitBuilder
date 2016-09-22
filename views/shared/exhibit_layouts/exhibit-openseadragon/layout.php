@@ -79,7 +79,7 @@ $captionPosition = isset($options['captions-position'])
 						<li role="presentation">
 						<?php endif; ?>
 							<a href="#tab<?php echo $tab_id; ?>" aria-controls="home" role="tab" data-toggle="tab">
-								<?php echo file_image('square_thumbnail', array(), $item) ?>
+								<?php echo mdid_thumbnail_tag($item) ?>
 							</a>
 						</li>
 						<?php $tab_id++; ?>
