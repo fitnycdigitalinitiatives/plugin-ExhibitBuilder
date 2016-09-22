@@ -9,7 +9,7 @@ $captionPosition = isset($options['captions-position'])
     ? html_escape($options['captions-position'])
     : 'center';
 ?>
-	<div class="row">	
+	<div class="row">
 		<div class="col-sm-3">
 		<h1><?php echo metadata('exhibit_page', 'title'); ?></h1>
 		<div class="text-justify">
@@ -29,8 +29,8 @@ $captionPosition = isset($options['captions-position'])
 		<?php if ($count == 1): ?>
 			<div id="viewer">
 				<?php foreach ($attachments as $attachment): ?>
-					<?php $file = $attachment->getFile(); ?>
-						<?php echo $this->openseadragon($file); ?>
+					<?php $item = $attachment->getItem(); ?>
+						<?php echo $this->openseadragon($item); ?>
 						<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
@@ -44,10 +44,10 @@ $captionPosition = isset($options['captions-position'])
 				<div class="tab-content">
 					<?php $id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
-						<?php $file = $attachment->getFile(); ?>
+						<?php $item = $attachment->getItem(); ?>
 						<?php if ($id == 1): ?>
 						<div role="tabpanel" class="tab-pane active" id="tab<?php echo $id; ?>">
-							<?php echo $this->openseadragon($file); ?>
+							<?php echo $this->openseadragon($item); ?>
 							<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
@@ -57,7 +57,7 @@ $captionPosition = isset($options['captions-position'])
 						</div>
 						<?php else: ?>
 						<div role="tabpanel" class="tab-pane" id="tab<?php echo $id; ?>">
-							<?php echo $this->openseadragon($file); ?>
+							<?php echo $this->openseadragon($item); ?>
 							<?php $caption = $attachment['caption']; ?>
 							<?php if ($caption): ?>
 							<div class="caption">
@@ -72,14 +72,14 @@ $captionPosition = isset($options['captions-position'])
 				<ul class="nav nav-tabs" role="tablist">
 					<?php $tab_id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
-						<?php $file = $attachment->getFile(); ?>
+						<?php $item = $attachment->getItem(); ?>
 						<?php if ($tab_id == 1): ?>
 						<li class="active" role="presentation">
 						<?php else: ?>
 						<li role="presentation">
 						<?php endif; ?>
 							<a href="#tab<?php echo $tab_id; ?>" aria-controls="home" role="tab" data-toggle="tab">
-								<?php echo file_image('square_thumbnail', array(), $file) ?>
+								<?php echo file_image('square_thumbnail', array(), $item) ?>
 							</a>
 						</li>
 						<?php $tab_id++; ?>
