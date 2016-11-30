@@ -1,52 +1,44 @@
-.layout-file-text .exhibit-items {
-    max-width: 40%;
+.exhibit-block {
+  position: relative;
 }
-
-.layout-file-text .exhibit-items > * {
-    max-width: 100%;
-    margin-bottom: 1em;
+nav .previous {
+  position: absolute;
+  top: 50%;
+  left: -10px
 }
-
-.layout-file-text .exhibit-items > *:last-child {
-    margin-bottom: 0;
+nav .next {
+  position: absolute;
+  top: 50%;
+  right: -10px
 }
-
-.layout-file-text .exhibit-items .download-file {
-    clear: both;
-    border-bottom: 0;
-    overflow: visible;
+#viewer {
+	background-color: #f8f8f8;
 }
-
-.layout-file-text .exhibit-items.left {
-    float: left;
-    margin-right: 2%;
-    margin-left: 0;
+#viewer .caption {
+	padding: 0 20px 10px;
 }
-
-.layout-file-text .exhibit-items.right {
-    float: right;
-    margin-left: 2%;
-    margin-right: 0;
+#viewer .nav-tabs {
+	border: none;
+	padding: 0 20px 20px;
 }
-
-.layout-file-text .exhibit-items .fullsize img {
-    max-width: 100%;
-    margin-bottom: 1em;
+#viewer .nav-tabs>li {
+	width: 10%;
 }
-
-.layout-file-text .exhibit-item-caption p {
-    margin: 0;
-    clear: both;
+#viewer .nav-tabs>li>a {
+	border-radius: 4px;
+	padding: 5px;
 }
-
-.layout-file-text .captions-center .exhibit-item-caption {
-    text-align: center;
+#viewer .nav-tabs>li>a:hover {
+	border-color: #ddd;
 }
-
-.layout-file-text .captions-left .exhibit-item-caption {
-    text-align: left;
+#viewer .nav-tabs>li.active>a, #viewer .nav-tabs>li.active>a:focus, #viewer .nav-tabs>li.active>a:hover {
+	border-bottom-color: #ddd;
 }
-
-.layout-file-text .captions-right .exhibit-item-caption {
-    text-align: right;
+#viewer .nav-tabs>li img {
+	width: 100%;
+}
+@media (max-width: 767px) {
+	#viewer .openseadragon-frame {
+		overflow: visible;
+	}
 }
