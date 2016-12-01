@@ -10,10 +10,10 @@ $captionPosition = isset($options['captions-position'])
     : 'center';
 ?>
   <nav>
-      <?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-circle previous'))): ?>
+      <?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round previous'))): ?>
         <?php echo $prevLink; ?>
       <?php endif; ?>
-      <?php if ($nextLink = exhibit_builder_link_to_next_page('<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-circle next'))): ?>
+      <?php if ($nextLink = exhibit_builder_link_to_next_page('<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round next'))): ?>
         <?php echo $nextLink; ?>
       <?php endif; ?>
   </nav>
