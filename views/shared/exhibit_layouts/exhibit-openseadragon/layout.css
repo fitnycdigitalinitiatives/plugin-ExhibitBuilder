@@ -1,15 +1,12 @@
-.exhibit-block {
-  position: relative;
-}
 nav .previous {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: -10px
+  left: 5px;
 }
 nav .next {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  right: -10px
+  right: 5px;
 }
 #viewer {
 	background-color: #f8f8f8;
