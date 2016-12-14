@@ -42,6 +42,51 @@ nav .next {
     float: none;
   }
 }
+@media (max-width: 1100) {
+  nav .previous {
+    position: initial;
+    margin-top: -74px;
+    float: left;
+  }
+  nav .next {
+    position: initial;
+    margin-top: -74px;
+    float: right;
+  }
+}
+@media (max-width: 991px) {
+  nav .previous {
+    position: fixed;
+    top: 50%;
+    left: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+  nav .next {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+}
+@media (max-width: 872) {
+  nav .previous {
+    position: initial;
+    margin-top: -74px;
+    float: left;
+  }
+  nav .next {
+    position: initial;
+    margin-top: -74px;
+    float: right;
+  }
+}
+@media (max-width: 767px) {
+  
+}
 #viewer {
 	background-color: #f8f8f8;
 }
