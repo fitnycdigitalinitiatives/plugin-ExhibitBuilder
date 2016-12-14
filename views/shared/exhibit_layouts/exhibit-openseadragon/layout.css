@@ -1,12 +1,14 @@
 nav .previous {
   position: fixed;
   top: 50%;
-  left: 5px;
+  left: 30px;
+  margin-top: -24px;
 }
 nav .next {
   position: fixed;
   top: 50%;
-  right: 5px;
+  right: 30px;
+  margin-top: -24px;
 }
 #viewer {
 	background-color: #f8f8f8;
