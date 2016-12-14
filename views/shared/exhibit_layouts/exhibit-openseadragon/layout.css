@@ -24,7 +24,7 @@ nav .next {
     float: right;
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   nav .previous {
     position: fixed;
     top: 50%;
