@@ -16,10 +16,12 @@
   .exhibit-nav .previous {
     position: initial;
     float: left;
+    margin-top: 0;
   }
   .exhibit-nav .next {
     position: initial;
     float: right;
+    margin-top: 0;
   }
 }
 @media (max-width: 1199px) {
@@ -44,10 +46,12 @@
   .exhibit-nav .previous {
     position: initial;
     float: left;
+    margin-top: 0;
   }
   .exhibit-nav .next {
     position: initial;
     float: right;
+    margin-top: 0;
   }
 }
 @media (max-width: 991px) {
@@ -72,10 +76,12 @@
   .exhibit-nav .previous {
     position: initial;
     float: left;
+    margin-top: 0;
   }
   .exhibit-nav .next {
     position: initial;
     float: right;
+    margin-top: 0;
   }
 }
 @media (max-width: 767px) {
