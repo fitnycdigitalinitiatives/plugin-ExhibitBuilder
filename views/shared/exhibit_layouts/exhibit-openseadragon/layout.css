@@ -42,7 +42,7 @@ nav .next {
     float: none;
   }
 }
-@media (max-width: 1100) {
+@media (max-width: 1100px) {
   nav .previous {
     position: initial;
     margin-top: -74px;
