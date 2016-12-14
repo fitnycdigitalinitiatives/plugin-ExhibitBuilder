@@ -1,14 +1,28 @@
 nav .previous {
   position: fixed;
   top: 50%;
-  left: 30px;
+  left: 15px;
   margin-top: -24px;
+  z-index: 1;
 }
 nav .next {
   position: fixed;
   top: 50%;
-  right: 30px;
+  right: 15px;
   margin-top: -24px;
+  z-index: 1;
+}
+@media (max-width: 1300px) {
+  nav .previous {
+    position: initial;
+    margin-top: -74px;
+    float: left;
+  }
+  nav .next {
+    position: initial;
+    margin-top: -74px;
+    float: right;
+  }
 }
 #viewer {
 	background-color: #f8f8f8;
