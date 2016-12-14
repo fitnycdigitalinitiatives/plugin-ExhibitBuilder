@@ -72,7 +72,7 @@ nav .next {
     float: none;
   }
 }
-@media (max-width: 872) {
+@media (max-width: 872px) {
   nav .previous {
     position: initial;
     margin-top: -74px;
@@ -85,7 +85,7 @@ nav .next {
   }
 }
 @media (max-width: 767px) {
-  
+
 }
 #viewer {
 	background-color: #f8f8f8;
