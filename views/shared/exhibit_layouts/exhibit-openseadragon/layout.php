@@ -45,7 +45,7 @@ $captionPosition = isset($options['captions-position'])
 							<?php if ($caption): ?>
 							<div class="caption">
 								<small><?php echo $caption; ?></small>
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="top" title="<?php echo metadata($item, array('Dublin Core', 'Description')); ?>" data-content="<?php echo metadata($item, array('Dublin Core', 'Description')); ?> <?php echo link_to_item('View full record', $props = array(), $action = 'show', $item); ?>"></span>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover" data-placement="top" title="<?php echo metadata($item, array('Dublin Core', 'Title')); ?>" data-content="<?php echo metadata($item, array('Dublin Core', 'Description')); ?>"></span>
 							</div>
 							<?php endif; ?>
 						</div>
