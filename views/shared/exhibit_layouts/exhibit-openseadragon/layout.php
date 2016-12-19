@@ -53,10 +53,17 @@ $captionPosition = isset($options['captions-position'])
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><?php echo metadata($item, array('Dublin Core', 'Title')); ?></h4>
+                        <h4 class="modal-title" id="myModalLabel">Item Information</h4>
                       </div>
                       <div class="modal-body">
                         <?php echo all_element_texts($item); ?>
+                        <!-- If the item belongs to a collection, the following creates a link to that collection. -->
+          							<?php if (metadata($item, 'Collection Name')): ?>
+          								<div id="collection" class="element">
+          									<h3><?php echo __('Collection'); ?></h3>
+          									<div class="element-text"><p><?php echo link_to_collection_for_item(); ?></p></div>
+          								</div>
+          							<?php endif; ?>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
