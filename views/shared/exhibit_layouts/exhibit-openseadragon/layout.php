@@ -86,6 +86,8 @@ $captionPosition = isset($options['captions-position'])
     <div class="col-xs-12">
           <?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round previous'))): ?>
             <?php echo $prevLink; ?>
+          <?php else: ?>
+            <?php echo exhibit_builder_link_to_exhibit('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>', null, array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round previous')); ?>
           <?php endif; ?>
           <?php if ($nextLink = exhibit_builder_link_to_next_page('<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round next'))): ?>
             <?php echo $nextLink; ?>
