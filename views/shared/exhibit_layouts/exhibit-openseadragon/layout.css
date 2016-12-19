@@ -97,6 +97,13 @@
 }
 #viewer .caption {
 	padding: 0 20px 10px;
+  position: relative;
+}
+#viewer .caption .glyphicon-info-sign {
+  position: absolute;
+  right: 5px;
+  top: -15px;
+  font-size: 15px;
 }
 #viewer .nav-tabs {
 	border: none;

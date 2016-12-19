@@ -25,11 +25,29 @@ $captionPosition = isset($options['captions-position'])
 					<?php $item = $attachment->getItem(); ?>
 						<?php echo $this->openseadragon($item); ?>
 						<?php $caption = $attachment['caption']; ?>
-							<?php if ($caption): ?>
 							<div class="caption">
 								<small><?php echo $caption; ?></small>
+                <!-- Modal button -->
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal"></span>
+                <!-- Record Modal -->
+                <div class="modal fade" id="record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Item Information</h4>
+                      </div>
+                      <div class="modal-body">
+                        <?php echo all_element_texts($item); ?>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <?php echo link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item); ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 							</div>
-							<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
 		<?php else: ?>
@@ -42,7 +60,6 @@ $captionPosition = isset($options['captions-position'])
 						<div role="tabpanel" class="tab-pane fade in active" id="tab<?php echo $id; ?>">
 							<?php echo $this->openseadragon($item); ?>
 							<?php $caption = $attachment['caption']; ?>
-							<?php if ($caption): ?>
 							<div class="caption">
 								<small><?php echo $caption; ?></small>
                 <!-- Modal button -->
@@ -66,17 +83,34 @@ $captionPosition = isset($options['captions-position'])
                   </div>
                 </div>
 							</div>
-							<?php endif; ?>
 						</div>
 						<?php else: ?>
 						<div role="tabpanel" class="tab-pane fade" id="tab<?php echo $id; ?>">
 							<?php echo $this->openseadragon($item); ?>
 							<?php $caption = $attachment['caption']; ?>
-							<?php if ($caption): ?>
 							<div class="caption">
 								<small><?php echo $caption; ?></small>
+                <!-- Modal button -->
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal<?php echo $id; ?>"></span>
+                <!-- Record Modal -->
+                <div class="modal fade" id="record-modal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Item Information</h4>
+                      </div>
+                      <div class="modal-body">
+                        <?php echo all_element_texts($item); ?>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <?php echo link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item); ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 							</div>
-							<?php endif; ?>
 						</div>
 						<?php endif; ?>
 						<?php $id++; ?>
