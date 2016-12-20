@@ -95,18 +95,25 @@
   border-radius: 4px;
   overflow: hidden;
 }
+#viewer .openseadragon-frame {
+  margin-bottom: 0;
+}
 #viewer .caption {
-	padding: 0 20px 10px;
+	padding: 20px 20px 10px;
   position: relative;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 #viewer .caption .glyphicon-info-sign {
   position: absolute;
   right: 5px;
-  top: -2px;
+  top: 5px;
   font-size: 15px;
 }
 #viewer .nav-tabs {
-	border: none;
+	border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
 	padding: 0 20px 20px;
 }
 #viewer .nav-tabs>li {
