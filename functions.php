@@ -123,6 +123,16 @@ function exhibit_builder_upgrade($args)
 
     $db = get_db();
 
+    // MySQL 5.7+ fix; must do first or else MySQL complains about any other ALTER
+    if (version_compare($oldVersion, '3.3', '<')) {
+        $sql = <<<SQL
+ALTER TABLE `{$db->prefix}exhibits`
+    ALTER `added` SET DEFAULT '2000-01-01 00:00:00',
+    ALTER `modified` SET DEFAULT '2000-01-01 00:00:00'
+SQL;
+        $db->query($sql);
+    }
+
     // Transition to upgrade model for EB
     if (version_compare($oldVersion, '0.6', '<') )
     {
@@ -278,9 +288,7 @@ SQL
     if (version_compare($oldVersion, '3.3', '<')) {
         $sql = <<<SQL
 ALTER TABLE `{$db->prefix}exhibits`
-    ADD `cover_image_file_id` INT UNSIGNED DEFAULT NULL AFTER `use_summary_page`,
-    ALTER `added` SET DEFAULT '2000-01-01 00:00:00',
-    ALTER `modified` SET DEFAULT '2000-01-01 00:00:00'
+    ADD `cover_image_file_id` INT UNSIGNED DEFAULT NULL AFTER `use_summary_page`
 SQL;
         $db->query($sql);
     }
@@ -358,7 +366,8 @@ function exhibit_builder_public_head($args)
 
     if ($module == 'exhibit-builder') {
         queue_css_file('exhibits');
-        if (($exhibitPage = get_current_record('exhibit_page', false))) {
+        $exhibitPage = get_current_record('exhibit_page', false);
+        if ($exhibitPage) {
             $blocks = $exhibitPage->ExhibitPageBlocks;
 
             $layouts = array();
@@ -453,7 +462,8 @@ function exhibit_builder_admin_nav($navArray)
 function exhibit_builder_theme_options($themeOptions, $args)
 {
     try {
-        if ($exhibit = get_current_record('exhibit', false)) {
+        $exhibit = get_current_record('exhibit', false);
+        if ($exhibit) {
             $exhibitThemeOptions = $exhibit->getThemeOptions();
             if (!empty($exhibitThemeOptions)) {
                 return serialize($exhibitThemeOptions);
