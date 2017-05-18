@@ -15,9 +15,9 @@ class ExhibitBuilder_View_Helper_ExhibitItemListing extends Zend_View_Helper_Abs
     public function exhibitItemListing($item)
     {
         $html = '<div class="item-listing" data-item-id="' . $item->id . '">';
-        if (mdid_square_thumbnail_tag($item, 'responsive')) {
+        if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID')))) {
           $html .= '<div class="item-file">'
-              . mdid_square_thumbnail_tag($item, 'responsive')
+              . '<img src="https://fitdil.fitnyc.edu/media/thumb/' . $record_id . '/' . $record_name . '/?square" class="responsive">'
               . '</div>';
 
         }
