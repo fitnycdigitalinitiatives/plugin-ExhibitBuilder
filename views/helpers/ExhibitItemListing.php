@@ -15,15 +15,11 @@ class ExhibitBuilder_View_Helper_ExhibitItemListing extends Zend_View_Helper_Abs
     public function exhibitItemListing($item)
     {
         $html = '<div class="item-listing" data-item-id="' . $item->id . '">';
-        if (metadata($item, 'has files')) {
-            foreach ($item->Files as $displayFile) {
-                if ($displayFile->hasThumbnail()) {
-                    $html .= '<div class="item-file">'
-                        . file_image('square_thumbnail', array(), $displayFile)
-                        . '</div>';
-                    break;
-                }
-            }
+        if (mdid_square_thumbnail_tag($item, 'responsive')) {
+          $html .= '<div class="item-file">'
+              . mdid_square_thumbnail_tag($item, 'responsive')
+              . '</div>';
+
         }
         $private = '';
         if (!metadata($item, 'public')) {
