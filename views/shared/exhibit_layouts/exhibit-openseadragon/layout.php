@@ -50,7 +50,7 @@ $captionPosition = isset($options['captions-position'])
 							</div>
 				<?php endforeach; ?>
 			</div>
-		<?php else: ?>
+		<?php elseif ($count > 1): ?>
 			<div id="viewer">
 				<div class="tab-content">
 					<?php $id = 1; ?>
