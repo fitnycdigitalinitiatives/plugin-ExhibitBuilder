@@ -12,8 +12,9 @@ $stem = $block->getFormStem() . "[attachments][{$index}]";
         <div class="delete-element" role="button" title="<?php echo __('Remove/Restore'); ?>"></div>
     </div>
     <div class="attachment-body">
-        <?php if ($file): ?>
-        <div class="attachment-background" style="background: url('<?php echo metadata($file, 'square_thumbnail_uri'); ?>') center / cover"></div>
+        <?php if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID')))): ?>
+          <?php $url = 'https://fitdil.fitnyc.edu/media/thumb/' . $record_id . '/' . $record_name . '/?square" class="responsive">'; ?>
+          <div class="attachment-background" style="background: url('<?php echo $url; ?>') center / cover"></div>
         <?php endif; ?>
         <h5>
             #<?php echo html_escape($item->id); ?>:<br>
