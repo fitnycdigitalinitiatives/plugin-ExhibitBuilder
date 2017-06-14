@@ -7,31 +7,6 @@
     margin-left: 1em;
 }
 
-#exhibit-page-navigation {
-    clear: both;
-    width: 100%;
-    margin: 1em 0;
-    line-height: 1.2;
-}
-
-#exhibit-page-navigation div {
-    width: 33%;
-}
-
-#exhibit-nav-prev {
-    float: left;
-    text-align: left;
-}
-
-#exhibit-nav-next {
-    float: right;
-    text-align: right;
-}
-
-#exhibit-nav-up {
-    margin: 0 auto;
-    text-align: center;
-}
 
 .exhibit-block {
     clear: both;
@@ -61,4 +36,94 @@
 .exhibit-item-link *,
 .download-file * {
     vertical-align: top;
+}
+/*! Navigation */
+.exhibit-nav {
+  margin-top: 15px;
+}
+.exhibit-nav .previous {
+  position: fixed;
+  top: 50%;
+  left: 15px;
+  margin-top: -24px;
+  z-index: 1;
+}
+.exhibit-nav .next {
+  position: fixed;
+  top: 50%;
+  right: 15px;
+  margin-top: -24px;
+  z-index: 1;
+}
+@media (max-width: 1300px) {
+  .exhibit-nav .previous {
+    position: initial;
+    float: left;
+    margin-top: 0;
+  }
+  .exhibit-nav .next {
+    position: initial;
+    float: right;
+    margin-top: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .exhibit-nav .previous {
+    position: fixed;
+    top: 50%;
+    left: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+  .exhibit-nav .next {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+}
+@media (max-width: 1100px) {
+  .exhibit-nav .previous {
+    position: initial;
+    float: left;
+    margin-top: 0;
+  }
+  .exhibit-nav .next {
+    position: initial;
+    float: right;
+    margin-top: 0;
+  }
+}
+@media (max-width: 991px) {
+  .exhibit-nav .previous {
+    position: fixed;
+    top: 50%;
+    left: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+  .exhibit-nav .next {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    margin-top: -24px;
+    z-index: 1;
+    float: none;
+  }
+}
+@media (max-width: 872px) {
+  .exhibit-nav .previous {
+    position: initial;
+    float: left;
+    margin-top: 0;
+  }
+  .exhibit-nav .next {
+    position: initial;
+    float: right;
+    margin-top: 0;
+  }
 }
