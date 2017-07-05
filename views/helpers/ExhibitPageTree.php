@@ -2,7 +2,7 @@
 
 /**
  * View helper for a unordered list "tree" of pages in an exhibit.
- * 
+ *
  * @package ExhibitBuilder\View\Helper
  */
 class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstract
@@ -11,14 +11,14 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      * @var Exhibit
      */
     protected $_exhibit;
-    
+
     /**
      * Pages, indexed by parent ID, for current exhibit
-     * 
+     *
      * @var array
      */
     protected $_pages;
-    
+
     /**
      * Return the tree of pages.
      *
@@ -64,7 +64,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
         } else {
             $html = '<li role="presentation">';
         }
-        
+
         $html .= '<a href="' . exhibit_builder_exhibit_uri($this->_exhibit, $page) . '">'
               . metadata($page, 'title') .'</a>';
         if (isset($this->_pages[$page->id])) {
@@ -84,7 +84,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening()
     {
-        return '<ul class="nav navbar-nav">';
+        return '<ul class="nav navbar-nav visible-lg-block visible-xs-block">';
     }
 
     /**
