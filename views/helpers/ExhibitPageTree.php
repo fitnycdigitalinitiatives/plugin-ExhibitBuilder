@@ -26,7 +26,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      * @param ExhibitPage|null $currentPage
      * @return string
      */
-    public function exhibitPageTree($exhibit, $currentPage = null)
+    public function exhibitPageTree($exhibit, $currentPage = null, $class = null)
     {
         $pages = $exhibit->PagesByParent;
         if (!($pages && isset($pages[0]))) {
@@ -38,7 +38,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
 
         $ancestorIds = $this->_getAncestorIds($currentPage);
 
-        $html = $this->_renderListOpening();
+        $html = $this->_renderListOpening($class);
         foreach ($pages[0] as $topPage) {
             $html .= $this->_renderPageBranch($topPage, $currentPage, $ancestorIds);
         }
@@ -82,9 +82,9 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      *
      * @return string
      */
-    protected function _renderListOpening()
+    protected function _renderListOpening($class)
     {
-        return '<ul class="nav navbar-nav visible-lg-block visible-xs-block">';
+        return '<ul class="' .@$class '">';
     }
 
     /**
