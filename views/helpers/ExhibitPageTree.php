@@ -44,7 +44,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
             $html .= $this->_renderPageBranch($topPage, $currentPage, $ancestorIds);
         }
         $html .= '</ul>';
-        return $html;
+        return $class . $html;
     }
 
     /**
@@ -86,8 +86,8 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening($class = null)
     {
-        $html = '<ul id="hello" class="' . $class . '">';
-        return $html . $class;
+        $html = '<ul class="' . $class . '">';
+        return $html;
     }
 
     /**
