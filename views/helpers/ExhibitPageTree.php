@@ -44,7 +44,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
             $html .= $this->_renderPageBranch($topPage, $currentPage, $ancestorIds);
         }
         $html .= '</ul>';
-        return $class . $html;
+        return $html;
     }
 
     /**

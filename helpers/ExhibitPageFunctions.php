@@ -56,15 +56,16 @@ function exhibit_builder_is_current_page($exhibitPage)
  * @param Exhibit|null Exhibit to print the tree of.
  * @param ExhibitPage|null If given, indicates the "current" page which will
  *  be marked by a CSS class in the output
+ * @param string $class
  * @return string
  */
-function exhibit_builder_page_tree($exhibit = null, $exhibitPage = null)
+function exhibit_builder_page_tree($exhibit = null, $exhibitPage = null, $class = null)
 {
     if (!$exhibit) {
         $exhibit = get_current_record('exhibit');
     }
 
-    return get_view()->exhibitPageTree($exhibit, $exhibitPage);
+    return get_view()->exhibitPageTree($exhibit, $exhibitPage, $class);
 }
 
 /**
