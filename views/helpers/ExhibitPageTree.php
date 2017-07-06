@@ -86,7 +86,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageTree extends Zend_View_Helper_Abstra
      */
     protected function _renderListOpening($class = null)
     {
-        $html = '<ul class="' . $class . '">';
+        $html = '<ul id="hello" class="' . $class . '">';
         return $html . $class;
     }
 
