@@ -8,6 +8,7 @@
   <div class="col-sm-5">
       <?php foreach ($attachments as $attachment): ?>
         <?php $item = $attachment->getItem(); ?>
+        <div id="viewer">
           <?php echo mdid_image_tag($item, 'img-responsive'); ?>
           <?php $caption = $attachment['caption']; ?>
           <div class="caption">
@@ -33,6 +34,7 @@
               </div>
             </div>
           </div>
+        </div>
       <?php endforeach; ?>
   </div>
 </div>
