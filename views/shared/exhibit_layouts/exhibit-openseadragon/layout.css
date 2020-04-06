@@ -1,48 +1,63 @@
 #viewer {
-	background-color: #f8f8f8;
+  background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
 }
+
 #viewer .openseadragon-frame {
   margin-bottom: 0;
   border-radius: 4px 4px 0 0;
 }
+
 #viewer .caption {
-	padding: 20px 20px 10px;
+  padding: 20px 20px 10px;
   position: relative;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
+
+#viewer .caption.single {
+  border-bottom: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+}
+
 #viewer .caption .glyphicon-info-sign {
   position: absolute;
   right: 5px;
   top: 5px;
   font-size: 15px;
 }
+
 #viewer .nav-tabs {
-	border: 1px solid #ccc;
+  border: 1px solid #ccc;
   border-top: none;
   border-radius: 0 0 4px 4px;
-	padding: 0 20px 20px;
+  padding: 0 20px 20px;
 }
+
 #viewer .nav-tabs>li {
-	width: 10%;
+  width: 10%;
 }
+
 #viewer .nav-tabs>li>a {
-	border-radius: 4px;
-	padding: 5px;
+  border-radius: 4px;
+  padding: 5px;
 }
+
 #viewer .nav-tabs>li>a:hover {
-	border-color: #ddd;
+  border-color: #ddd;
 }
+
 #viewer .nav-tabs>li.active>a, #viewer .nav-tabs>li.active>a:focus, #viewer .nav-tabs>li.active>a:hover {
-	border-bottom-color: #ddd;
+  border-bottom-color: #ddd;
 }
+
 #viewer .nav-tabs>li img {
-	width: 100%;
+  width: 100%;
 }
+
 @media (max-width: 767px) {
-	#viewer .openseadragon-frame {
-		overflow: visible;
-	}
+  #viewer .openseadragon-frame {
+    overflow: visible;
+  }
 }

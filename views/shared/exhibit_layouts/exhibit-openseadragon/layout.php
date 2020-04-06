@@ -11,31 +11,35 @@
 			<div id="viewer">
 				<?php foreach ($attachments as $attachment): ?>
 					<?php $item = $attachment->getItem(); ?>
-						<?php echo $this->openseadragon($item); ?>
-						<?php $caption = $attachment['caption']; ?>
-							<div class="caption">
-								<small><?php echo $caption; ?></small>
-                <!-- Modal button -->
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal"></span>
-                <!-- Record Modal -->
-                <div class="modal fade" id="record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Item Information</h4>
-                      </div>
-                      <div class="modal-body">
-                        <?php echo all_element_texts($item); ?>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <?php echo link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item); ?>
-                      </div>
-                    </div>
+          <div class="openseadragon-frame">
+            <div class="loader"></div>
+            <div class="openseadragon" id="openseadragon_single" data-record_id="<?php echo metadata($item, array('Item Type Metadata', 'Record ID')); ?>" data-record_name="<?php echo metadata($item, array('Item Type Metadata', 'Record Name')); ?>">
+            </div>
+          </div>
+					<?php $caption = $attachment['caption']; ?>
+					<div class="caption single">
+						<small><?php echo $caption; ?></small>
+            <!-- Modal button -->
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal"></span>
+            <!-- Record Modal -->
+            <div class="modal fade" id="record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Item Information</h4>
+                  </div>
+                  <div class="modal-body">
+                    <?php echo all_element_texts($item); ?>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <?php echo link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item); ?>
                   </div>
                 </div>
-							</div>
+              </div>
+            </div>
+					</div>
 				<?php endforeach; ?>
 			</div>
 		<?php else: ?>
@@ -43,10 +47,13 @@
 				<div class="tab-content">
 					<?php $id = 1; ?>
 					<?php foreach ($attachments as $attachment): ?>
-						<?php $item = $attachment->getItem(); ?>
-						<?php if ($id == 1): ?>
-						<div role="tabpanel" class="tab-pane fade in active" id="tab<?php echo $id; ?>">
-							<?php echo $this->openseadragon($item); ?>
+						<?php $item = $attachment->getItem(); ?>        
+						<div role="tabpanel" class="tab-pane fade<?php echo ($id == 1) ? " in active" : ""; ?>" id="tab<?php echo $id; ?>">
+              <div class="openseadragon-frame">
+                <div class="loader"></div>
+                <div class="openseadragon" id="openseadragon<?php echo $id; ?>" data-record_id="<?php echo metadata($item, array('Item Type Metadata', 'Record ID')); ?>" data-record_name="<?php echo metadata($item, array('Item Type Metadata', 'Record Name')); ?>">
+                </div>
+              </div>
 							<?php $caption = $attachment['caption']; ?>
 							<div class="caption">
 								<small><?php echo $caption; ?></small>
@@ -72,35 +79,6 @@
                 </div>
 							</div>
 						</div>
-						<?php else: ?>
-						<div role="tabpanel" class="tab-pane fade" id="tab<?php echo $id; ?>">
-							<?php echo $this->openseadragon($item); ?>
-							<?php $caption = $attachment['caption']; ?>
-							<div class="caption">
-								<small><?php echo $caption; ?></small>
-                <!-- Modal button -->
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal<?php echo $id; ?>"></span>
-                <!-- Record Modal -->
-                <div class="modal fade" id="record-modal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Item Information</h4>
-                      </div>
-                      <div class="modal-body">
-                        <?php echo all_element_texts($item); ?>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <?php echo link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item); ?>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-							</div>
-						</div>
-						<?php endif; ?>
 						<?php $id++; ?>
 					<?php endforeach; ?>
 				</div>
