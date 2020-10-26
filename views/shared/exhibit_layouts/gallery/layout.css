@@ -1,95 +1,137 @@
-.layout-gallery .gallery .exhibit-item, 
-.layout-gallery .gallery .exhibit-item:nth-of-type(2n) {
-    width: 24%;
-    margin-right: 1.25%;
+/* Bootstrap 4 */
+.card-deck {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.layout-gallery .gallery .exhibit-item:nth-of-type(4n) {
-    margin-right: 0;
+@media (min-width: 576px) {
+  .card-deck {
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
 }
 
-.layout-gallery .gallery.with-showcase {
-    margin-bottom: .5em;
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
 }
 
-.layout-gallery .gallery.with-showcase .exhibit-item {
-    width: 49%;
-    margin-right: 2%;
+.card-deck .card {
+  margin-bottom: 15px;
 }
 
-.layout-gallery .gallery.with-showcase .exhibit-item:nth-of-type(2n) {
-    margin-right: 0;
+@media (min-width: 576px) {
+  .card-deck .card {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-bottom: 0;
+    margin-left: 15px;
+  }
 }
 
-.layout-gallery .gallery-showcase,
-.layout-gallery .gallery.with-showcase,
-.layout-gallery .gallery.left, 
-.layout-gallery .gallery.right {
-    width: 49%;
+.card-img {
+  width: 100%;
 }
 
-.layout-gallery .gallery-showcase.left,
-.layout-gallery .gallery.left {
-    float: left;
-    margin-right: 2%;
+/* Added to Bootstrap */
+#image .card-deck img {
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+  cursor: zoom-in;
+  margin: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.layout-gallery .gallery-showcase.right,
-.layout-gallery .gallery.right {
-    float: right;
-    margin-left: 2%;
+@media (min-width: 576px) {
+  #image .card {
+    flex: 0 0 calc((100%) - 30px);
+    margin-bottom: 15px;
+  }
 }
 
-.layout-gallery a {
-    border-bottom: 0;
+@media (min-width: 768px) {
+  body.exhibits.show #main-nav, body.exhibits.summary #main-nav {
+    top: 0;
+    width: 100%;
+    z-index: 500;
+  }
+
+  body.exhibits.show main, body.exhibits.summary main {
+    margin-top: 0;
+  }
+
+  #image .card-deck {
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #image .card.count-1 {
+    flex: 0 0 calc((100%) - 30px);
+  }
+
+  #image .card.count-2, #image .card.count-3, #image .card.count-4, #image .card.count-5, #image .card.count-6 {
+    flex: 0 0 calc((100% / 2) - 30px);
+  }
+
+  #image .card.count-7, #image .card.count-8 {
+    flex: 0 0 calc((100% / 2) - 30px);
+  }
 }
 
-.layout-gallery .exhibit-item-link *,
-.layout-gallery .download-file * {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto 5px;
+@media (min-width: 992px) {
+  #image .card.count-2 {
+    flex: 0 0 calc((100% / 2) - 30px);
+  }
+
+  #image .card.count-3 {
+    flex: 0 0 calc((100% / 3) - 30px);
+  }
+
+  #image .card.count-4 {
+    flex: 0 0 calc((100% / 2) - 30px);
+  }
+
+  #image .card.count-5, #image .card.count-6 {
+    flex: 0 0 calc((100% / 3) - 30px);
+  }
+
+  #image .card.count-7, #image .card.count-8 {
+    flex: 0 0 calc((100% / 4) - 30px);
+  }
 }
 
-.layout-gallery .exhibit-item {
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 1.25%;
+.card-footer {
+  padding: .75rem 1.25rem;
+  background-color: rgba(0, 0, 0, .03);
+  border-top: 1px solid rgba(0, 0, 0, .125);
+  position: relative;
+  min-height: 3rem;
 }
 
-.layout-gallery .gallery-showcase.right.with-left {
-    margin-left: 0;
-}
-
-.layout-gallery .gallery-showcase.left.with-right {
-    margin-right: 0;
-}
-
-.layout-gallery .gallery.with-showcase.left {
-    clear: left;
-}
-
-.layout-gallery .gallery.with-showcase.right {
-    clear: right;
-}
-
-.layout-gallery .gallery.with-showcase img {
-    max-width: 100%;
-}
-
-.layout-gallery .exhibit-item-caption p {
-    margin: 0 0 2% 0;
-    clear: both;
-}
-
-.layout-gallery .captions-center .exhibit-item-caption {
-    text-align: center;
-}
-
-.layout-gallery .captions-left .exhibit-item-caption {
-    text-align: left;
-}
-
-.layout-gallery .captions-right .exhibit-item-caption {
-    text-align: right;
+.card-footer .glyphicon-info-sign {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  font-size: 15px;
 }

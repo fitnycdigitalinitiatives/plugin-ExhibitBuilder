@@ -1,27 +1,71 @@
-<?php
-$showcasePosition = isset($options['showcase-position'])
-    ? html_escape($options['showcase-position'])
-    : 'none';
-$showcaseFile = $showcasePosition !== 'none' && !empty($attachments);
-$galleryPosition = isset($options['gallery-position'])
-    ? html_escape($options['gallery-position'])
-    : 'left';
-$galleryFileSize = isset($options['gallery-file-size'])
-    ? html_escape($options['gallery-file-size'])
-    : null;
-$captionPosition = isset($options['captions-position'])
-    ? html_escape($options['captions-position'])
-    : 'center';
-?>
-<?php if ($showcaseFile): ?>
-<div class="gallery-showcase <?php echo $showcasePosition; ?> with-<?php echo $galleryPosition; ?> captions-<?php echo $captionPosition; ?>">
-    <?php
-        $attachment = array_shift($attachments);
-        echo $this->exhibitAttachment($attachment, array('imageSize' => 'fullsize'));
-    ?>
+<div class="row">
+  <div class="col-sm-3" id="text">
+    <h1>
+      <?php if ($pageParent = get_current_record('exhibit_page')->getParent()): ?>
+        <small class="text-muted">
+          <?php echo metadata($pageParent, 'title'); ?>
+        </small></br>
+      <?php endif; ?>
+      <?php echo metadata('exhibit_page', 'title'); ?>
+    </h1>
+    <?php echo $text; ?>
+  </div>
+  <div class="col-sm-9" id="image">
+      <div class="card-deck">
+        <?php
+          $attachment_count = count($attachments);
+          $id = 1;
+          foreach ($attachments as $attachment) {
+              $item = $attachment->getItem();
+              $title = metadata($item, array('Dublin Core', 'Title'));
+              $image_url = mdid_medium_image_url($item);
+              $record_id = metadata($item, array('Item Type Metadata', 'Record ID'));
+              $record_name = metadata($item, array('Item Type Metadata', 'Record Name'));
+              $html = '<div class="card count-' . $attachment_count . '">';
+              $html .= '<img class="card-img openseadragon-popup" id="openseadragon' . $id. '" src="' . $image_url. '" alt="' . $title . '" data-record_id="' . $record_id . '" data-record_name="' . $record_name . '" />';
+              $html .= '<div class="card-footer gallery-caption">';
+              if ($attachment['caption']) {
+                  $html .= '<small>' . $attachment['caption'] . '</small>';
+              }
+              $html .= '
+              <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></span>
+              <!-- Record Modal -->
+              <div class="modal fade" id="record-modal' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Item Information</h4>
+                    </div>
+                    <div class="modal-body">
+                      ' . all_element_texts($item) . '
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      ' . link_to_item('View full record', $props = array('class' => 'btn btn-primary', 'role' => 'button'), $action = 'show', $item) . '
+                    </div>
+                  </div>
+                </div>
+              </div>
+              ';
+              $html .= '</div>';
+              $html .= '</div>';
+              echo $html;
+              $id++;
+          };
+        ?>
+      </div>
+  </div>
 </div>
-<?php endif; ?>
-<div class="gallery <?php if ($showcaseFile || !empty($text)) echo "with-showcase $galleryPosition"; ?> captions-<?php echo $captionPosition; ?>">
-    <?php echo $this->exhibitAttachmentGallery($attachments, array('imageSize' => $galleryFileSize)); ?>
+<div class="exhibit-nav">
+  <div class="col-xs-12">
+        <?php if ($prevLink = exhibit_builder_link_to_previous_page('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">Previous</span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round previous'))): ?>
+          <?php echo $prevLink; ?>
+        <?php else: ?>
+          <?php echo exhibit_builder_link_to_exhibit(null, '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">Previous</span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round previous')); ?>
+        <?php endif; ?>
+        <?php if ($nextLink = exhibit_builder_link_to_next_page('<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">Next</span>', array('type' => 'button', 'class' => 'btn btn-default btn-lg btn-round next'))): ?>
+          <?php echo $nextLink; ?>
+        <?php endif; ?>
+  </div>
 </div>
-<?php echo $text; ?>

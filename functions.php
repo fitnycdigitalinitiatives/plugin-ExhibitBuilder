@@ -11,8 +11,8 @@
 function exhibit_builder_initialize()
 {
     add_translation_source(dirname(__FILE__) . '/languages');
-    add_shortcode ('exhibits', 'exhibit_builder_exhibits_shortcode');
-    add_shortcode ('featured_exhibits', 'exhibit_builder_featured_exhibits_shortcode');
+    add_shortcode('exhibits', 'exhibit_builder_exhibits_shortcode');
+    add_shortcode('featured_exhibits', 'exhibit_builder_featured_exhibits_shortcode');
 }
 
 /**
@@ -22,7 +22,8 @@ function exhibit_builder_install()
 {
     $db = get_db();
 
-    $db->query(<<<SQL
+    $db->query(
+        <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibits` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) DEFAULT NULL,
@@ -45,7 +46,8 @@ CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibits` (
 SQL
     );
 
-    $db->query(<<<SQL
+    $db->query(
+        <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_pages` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `exhibit_id` INT UNSIGNED NOT NULL,
@@ -60,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_pages` (
 SQL
     );
 
-    $db->query(<<<SQL
+    $db->query(
+        <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_page_blocks` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `page_id` INT UNSIGNED NOT NULL,
@@ -74,7 +77,8 @@ CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_page_blocks` (
 SQL
     );
 
-    $db->query(<<<SQL
+    $db->query(
+        <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_block_attachments` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `block_id` INT UNSIGNED NOT NULL,
@@ -134,19 +138,17 @@ SQL;
     }
 
     // Transition to upgrade model for EB
-    if (version_compare($oldVersion, '0.6', '<') )
-    {
+    if (version_compare($oldVersion, '0.6', '<')) {
         $sql = "ALTER TABLE `{$db->prefix}exhibits` ADD COLUMN `theme_options` text collate utf8_unicode_ci default NULL AFTER `theme`";
         $db->query($sql);
     }
 
-    if (version_compare($oldVersion, '0.6', '<=') )
-    {
+    if (version_compare($oldVersion, '0.6', '<=')) {
         $sql = "ALTER TABLE `{$db->prefix}items_section_pages` ADD COLUMN `caption` text collate utf8_unicode_ci default NULL AFTER `text`";
         $db->query($sql);
     }
 
-    if(version_compare($oldVersion, '2.0-dev', '<')) {
+    if (version_compare($oldVersion, '2.0-dev', '<')) {
         // Automatically skip these steps if the final one is already done
         // (would happen on retry of an earlier failed upgrade)
         $renamesDone = (bool) $db->fetchOne("SHOW TABLES LIKE '{$db->prefix}exhibit_pages'");
@@ -175,7 +177,7 @@ SQL;
         $sectionData = $result->fetchAll();
 
         $sectionIdMap = array();
-        foreach($sectionData as $section) {
+        foreach ($sectionData as $section) {
             // Create a page for each section
             $newPageData = array(
                 'title' => $section['title'],
@@ -201,13 +203,16 @@ SQL;
         }
 
         //map the old section ids to the new page ids, and slap in the correct exhibit id.
-        foreach($sectionIdMap as $sectionId => $data) {
+        foreach ($sectionIdMap as $sectionId => $data) {
             $updateData = array(
                 'parent_id' => $data['pageId'],
                 'exhibit_id' => $data['exhibitId']
             );
-            $db->update($db->ExhibitPage, $updateData,
-                array('section_id = ?' => $sectionId));
+            $db->update(
+                $db->ExhibitPage,
+                $updateData,
+                array('section_id = ?' => $sectionId)
+            );
         }
 
         $sql = "ALTER TABLE `{$db->prefix}exhibit_pages` DROP `section_id` ";
@@ -218,7 +223,7 @@ SQL;
         $db->query($sql);
     }
 
-    if(version_compare($oldVersion, '2.0-dev2', '<')) {
+    if (version_compare($oldVersion, '2.0-dev2', '<')) {
         $sql = "ALTER TABLE `{$db->prefix}exhibit_page_entries` ADD `file_id` INT UNSIGNED DEFAULT NULL AFTER `item_id`";
         $db->query($sql);
 
@@ -237,7 +242,8 @@ SQL;
     }
 
     if (version_compare($oldVersion, '3.0-dev', '<')) {
-        $db->query(<<<SQL
+        $db->query(
+            <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_page_blocks` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `page_id` INT UNSIGNED NOT NULL,
@@ -251,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_page_blocks` (
 SQL
         );
 
-        $db->query(<<<SQL
+        $db->query(
+            <<<SQL
 CREATE TABLE IF NOT EXISTS `{$db->prefix}exhibit_block_attachments` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `block_id` INT UNSIGNED NOT NULL,
@@ -331,8 +338,11 @@ function exhibit_builder_define_acl($args)
      */
     $acl->addResource('ExhibitBuilder_Exhibits');
 
-    $acl->allow(null, 'ExhibitBuilder_Exhibits',
-        array('show', 'summary', 'show-item', 'browse', 'tags'));
+    $acl->allow(
+        null,
+        'ExhibitBuilder_Exhibits',
+        array('show', 'summary', 'show-item', 'browse', 'tags')
+    );
 
     // Allow contributors everything but editAll and deleteAll.
     $acl->allow('contributor', 'ExhibitBuilder_Exhibits', array(
@@ -340,8 +350,12 @@ function exhibit_builder_define_acl($args)
         'attachment', 'attachment-item-options', 'theme-config',
         'editSelf', 'deleteSelf', 'showSelfNotPublic', 'block-form'));
 
-    $acl->allow(null, 'ExhibitBuilder_Exhibits', array('edit', 'delete'),
-        new Omeka_Acl_Assert_Ownership);
+    $acl->allow(
+        null,
+        'ExhibitBuilder_Exhibits',
+        array('edit', 'delete'),
+        new Omeka_Acl_Assert_Ownership
+    );
 }
 
 /**
@@ -377,12 +391,19 @@ function exhibit_builder_public_head($args)
                     $layouts[$layout->id] = true;
                     try {
                         queue_css_url($layout->getAssetUrl('layout.css'));
+                        if ($layout->name == 'Slider') {
+                            queue_css_url($layout->getAssetUrl('js/owl.carousel.min.css'));
+                            queue_js_url($layout->getAssetUrl('js/owl.carousel.min.js'));
+                            queue_js_url($layout->getAssetUrl('js/slide.js'));
+                        }
                     } catch (InvalidArgumentException $e) {
                         // no CSS for this layout
                     }
                 }
             }
-            fire_plugin_hook('exhibit_builder_page_head', array(
+            fire_plugin_hook(
+                'exhibit_builder_page_head',
+                array(
                 'view' => $args['view'],
                 'layouts' => $layouts)
             );
@@ -664,7 +685,7 @@ function exhibit_builder_api_extend_items($extend, $args)
     $item = $args['record'];
     $pages = get_db()->getTable('ExhibitPage')->findBy(array('item' => $item->id));
 
-    if(count($pages) == 1) {
+    if (count($pages) == 1) {
         $page = $pages[0];
         $extend['exhibit_pages'] = array(
             'id' => $page->id,
@@ -683,10 +704,10 @@ function exhibit_builder_api_extend_items($extend, $args)
 
 function exhibit_builder_api_import_omeka_adapters($adapters, $args)
 {
-        $exhibitsAdapter = new ApiImport_ResponseAdapter_Omeka_GenericAdapter(null, $args['endpointUri'], 'Exhibit');
-        $exhibitsAdapter->setService($args['omeka_service']);
-        $exhibitsAdapter->setUserProperties(array('owner'));
-        $adapters['exhibits'] = $exhibitsAdapter;
-        $adapters['exhibit_pages'] = 'ExhibitBuilder_ApiImport_ExhibitPageAdapter';
-        return $adapters;
+    $exhibitsAdapter = new ApiImport_ResponseAdapter_Omeka_GenericAdapter(null, $args['endpointUri'], 'Exhibit');
+    $exhibitsAdapter->setService($args['omeka_service']);
+    $exhibitsAdapter->setUserProperties(array('owner'));
+    $adapters['exhibits'] = $exhibitsAdapter;
+    $adapters['exhibit_pages'] = 'ExhibitBuilder_ApiImport_ExhibitPageAdapter';
+    return $adapters;
 }

@@ -1,3 +1,27 @@
+#image {
+  position: relative;
+}
+
+#previous-slide {
+  position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  border-radius: 50%;
+  box-shadow: -1px 0px 3px 0px #888888;
+}
+
+#next-slide {
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  border-radius: 50%;
+  box-shadow: -1px 0px 3px 0px #888888;
+}
+
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -10,7 +34,6 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
-  margin-bottom: 15px;
 }
 
 .card-img {
