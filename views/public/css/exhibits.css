@@ -1,129 +1,38 @@
 .exhibit-item-caption {
-    font-size: 0.8em;
-    margin-bottom: 1.2em !important;
+  font-size: 0.8em;
+  margin-bottom: 1.2em !important;
 }
 
 #exhibit-pages ul {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
-
 .exhibit-block {
-    clear: both;
-    margin-bottom: 1.5em;
+  clear: both;
+  margin-bottom: 1.5em;
 }
 
 .exhibit-block:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .exhibit-items img {
-    vertical-align: top;
-    max-width: 100%;
-    height: auto;
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
 }
 
 .exhibit-item-link {
-    display: block;
+  display: block;
 }
 
 .exhibit-item-link,
 .download-file {
-    vertical-align: top;
-    display: block;
+  vertical-align: top;
+  display: block;
 }
 
 .exhibit-item-link *,
 .download-file * {
-    vertical-align: top;
-}
-/*! Navigation */
-.exhibit-nav {
-  margin-top: 15px;
-}
-.exhibit-nav .previous {
-  position: fixed;
-  top: 50%;
-  left: 15px;
-  margin-top: -24px;
-  z-index: 1;
-}
-.exhibit-nav .next {
-  position: fixed;
-  top: 50%;
-  right: 15px;
-  margin-top: -24px;
-  z-index: 1;
-}
-@media (max-width: 1300px) {
-  .exhibit-nav .previous {
-    position: initial;
-    float: left;
-    margin-top: 0;
-  }
-  .exhibit-nav .next {
-    position: initial;
-    float: right;
-    margin-top: 0;
-  }
-}
-@media (max-width: 1199px) {
-  .exhibit-nav .previous {
-    position: fixed;
-    top: 50%;
-    left: 15px;
-    margin-top: -24px;
-    z-index: 1;
-    float: none;
-  }
-  .exhibit-nav .next {
-    position: fixed;
-    top: 50%;
-    right: 15px;
-    margin-top: -24px;
-    z-index: 1;
-    float: none;
-  }
-}
-@media (max-width: 1100px) {
-  .exhibit-nav .previous {
-    position: initial;
-    float: left;
-    margin-top: 0;
-  }
-  .exhibit-nav .next {
-    position: initial;
-    float: right;
-    margin-top: 0;
-  }
-}
-@media (max-width: 991px) {
-  .exhibit-nav .previous {
-    position: fixed;
-    top: 50%;
-    left: 15px;
-    margin-top: -24px;
-    z-index: 1;
-    float: none;
-  }
-  .exhibit-nav .next {
-    position: fixed;
-    top: 50%;
-    right: 15px;
-    margin-top: -24px;
-    z-index: 1;
-    float: none;
-  }
-}
-@media (max-width: 872px) {
-  .exhibit-nav .previous {
-    position: initial;
-    float: left;
-    margin-top: 0;
-  }
-  .exhibit-nav .next {
-    position: initial;
-    float: right;
-    margin-top: 0;
-  }
+  vertical-align: top;
 }
