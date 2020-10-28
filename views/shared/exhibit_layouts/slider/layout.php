@@ -12,8 +12,7 @@
   </div>
   <div class="col-sm-9" id="image">
     <button type="button" class="btn btn-secondary btn-circle" id="previous-slide">
-      <i class="fa fa-chevron-left"></i>
-      <span class="sr-only">Previous</span>
+      <i class="fas fa-chevron-left"></i><span class="sr-only">Previous</span>
     </button>
     <div class="owl-carousel">
       <?php
@@ -32,7 +31,7 @@
                 $html .= '<small>' . $attachment['caption'] . '</small>';
             }
             $html .= '
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></span>
+            <i class="fas fa-info-circle info" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></i><span class="sr-only">Information</span>
             ';
             $modals .= '
             <!-- Record Modal -->
@@ -63,8 +62,7 @@
     </div>
 
     <button type="button" class="btn btn-secondary btn-circle" id="next-slide">
-      <i class="fa fa-chevron-right"></i>
-      <span class="sr-only">Next</span>
+      <i class="fas fa-chevron-right"></i><span class="sr-only">Next</span>
     </button>
   </div>
   <?php echo $modals; ?>

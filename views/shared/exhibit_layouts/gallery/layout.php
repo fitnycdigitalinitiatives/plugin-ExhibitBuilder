@@ -28,7 +28,7 @@
                   $html .= '<small>' . $attachment['caption'] . '</small>';
               }
               $html .= '
-              <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></span>
+              <i class="fas fa-info-circle info" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></i><span class="sr-only">Information</span>
               <!-- Record Modal -->
               <div class="modal fade" id="record-modal' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">

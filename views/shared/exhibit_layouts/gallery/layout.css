@@ -129,7 +129,7 @@
   min-height: 3rem;
 }
 
-.card-footer .glyphicon-info-sign {
+.card-footer .info {
   position: absolute;
   right: 5px;
   top: 7px;

@@ -35,7 +35,7 @@
   border-radius: 0 0 4px 4px;
 }
 
-#viewer .caption .glyphicon-info-sign {
+#viewer .caption .info {
   position: absolute;
   right: 5px;
   top: 5px;
