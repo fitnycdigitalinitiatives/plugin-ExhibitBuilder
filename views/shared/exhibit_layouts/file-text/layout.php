@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-sm-7">
+  <div class="col-sm-7" id="text">
     <h1><?php echo metadata('exhibit_page', 'title'); ?></h1>
     <div class="text-justify">
       <?php echo $text; ?>
     </div>
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-5" id="image">
     <?php
       $id = 1;
       foreach ($attachments as $attachment) {
