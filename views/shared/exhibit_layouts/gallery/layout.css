@@ -47,10 +47,6 @@
   }
 }
 
-.card-img {
-  width: 100%;
-}
-
 /* Added to Bootstrap */
 #image .card-deck img {
   border-top-left-radius: calc(.25rem - 1px);

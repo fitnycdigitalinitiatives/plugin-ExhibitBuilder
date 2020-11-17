@@ -15,7 +15,7 @@
           $record_id = metadata($item, array('Item Type Metadata', 'Record ID'));
           $record_name = metadata($item, array('Item Type Metadata', 'Record Name'));
           $html = '<div class="card">';
-          $html .= '<img class="card-img openseadragon-popup" id="openseadragon' . $id. '" src="' . $image_url. '" alt="' . $title . '" data-record_id="' . $record_id . '" data-record_name="' . $record_name . '" />';
+          $html .= '<img class="card-img-top openseadragon-popup" id="openseadragon' . $id. '" src="' . $image_url. '" alt="' . $title . '" data-record_id="' . $record_id . '" data-record_name="' . $record_name . '" />';
           $html .= '<div class="card-footer gallery-caption">';
           if ($attachment['caption']) {
               $html .= '<small>' . $attachment['caption'] . '</small>';
