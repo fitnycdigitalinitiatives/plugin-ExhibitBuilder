@@ -37,4 +37,8 @@
   right: 5px;
   top: 7px;
   font-size: 15px;
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: 1;
 }

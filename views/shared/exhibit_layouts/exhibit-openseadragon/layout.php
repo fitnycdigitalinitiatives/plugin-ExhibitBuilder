@@ -20,7 +20,9 @@
 					<div class="caption single">
 						<small><?php echo $caption; ?></small>
             <!-- Modal button -->
-            <i class="fas fa-info-circle info" aria-hidden="true" data-toggle="modal" data-target="#record-modal"></i><span class="sr-only">Information</span>
+            <button class="info" type="button" name="button" data-toggle="modal" data-target="#record-modal">
+              <i class="fas fa-info-circle"></i><span class="sr-only">Information</span>
+            </button>
             <!-- Record Modal -->
             <div class="modal fade" id="record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">

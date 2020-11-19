@@ -21,14 +21,16 @@
               $html .= '<small>' . $attachment['caption'] . '</small>';
           }
           $html .= '
-          <i class="fas fa-info-circle info" aria-hidden="true" data-toggle="modal" data-target="#record-modal' . $id . '"></i><span class="sr-only">Information</span>
+          <button class="info" type="button" name="button" data-toggle="modal" data-target="#record-modal' . $id . '">
+            <i class="fas fa-info-circle"></i><span class="sr-only">Information</span>
+          </button>
           <!-- Record Modal -->
-          <div class="modal fade" id="record-modal' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="record-modal' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel' . $id . '">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Item Information</h4>
+                  <h4 class="modal-title" id="myModalLabel' . $id . '">Item Information</h4>
                 </div>
                 <div class="modal-body">
                   ' . all_element_texts($item) . '
