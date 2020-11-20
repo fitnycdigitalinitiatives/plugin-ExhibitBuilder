@@ -162,6 +162,10 @@ class ExhibitLayout
             'file' => array(
                 'name' => __('File'),
                 'description' => __('Layout featuring a standalone file')
+            ),
+            'section' => array(
+                'name' => __('Section'),
+                'description' => __('Layout to display a new section, a top-level page')
             )
         );
 
