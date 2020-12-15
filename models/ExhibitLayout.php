@@ -155,6 +155,10 @@ class ExhibitLayout
                 'name' => __('Gallery'),
                 'description' => __('A gallery layout featuring file thumbnails')
             ),
+            'collection' => array(
+                'name' => __('Collection'),
+                'description' => __('A gallery layout featuring thumbnails from a selected collection. CURRENTLY FOR USE WITH BELLER THEME ONLY')
+            ),
             'text' => array(
                 'name' => __('Text'),
                 'description' => __('Layout featuring a block of text without files')
