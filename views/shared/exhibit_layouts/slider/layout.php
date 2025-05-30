@@ -16,26 +16,29 @@
     </button>
     <div class="owl-carousel">
       <?php
-        $attachment_count = count($attachments);
-        $id = 1;
-        foreach ($attachments as $attachment) {
-            $item = $attachment->getItem();
-            $title = metadata($item, array('Dublin Core', 'Title'));
-            $image_url = mdid_medium_image_url($item);
-            $record_id = metadata($item, array('Item Type Metadata', 'Record ID'));
-            $record_name = metadata($item, array('Item Type Metadata', 'Record Name'));
-            $html = '<div class="card count-' . $attachment_count . '">';
-            $html .= '<img class="card-img-top openseadragon-popup" id="openseadragon' . $id. '" src="' . $image_url. '" alt="' . $title . '" data-record_id="' . $record_id . '" data-record_name="' . $record_name . '" />';
-            $html .= '<div class="card-footer gallery-caption">';
-            if ($attachment['caption']) {
-                $html .= '<small>' . $attachment['caption'] . '</small>';
-            }
-            $html .= '
+      $attachment_count = count($attachments);
+      $id = 1;
+      foreach ($attachments as $attachment) {
+        $item = $attachment->getItem();
+        $title = metadata($item, array('Dublin Core', 'Title'));
+        $image_url = mdid_medium_image_url($item);
+        $s3_path = metadata($item, array('Item Type Metadata', 's3_path'));
+        $parsed_url = parse_url($s3_path);
+        $key = ltrim($parsed_url["path"], '/');
+        $iiifEndpoint = get_theme_option('iiif_endpoint');
+        $info_json_url = $iiifEndpoint . str_replace("/", "%2F", substr($key, 0, -4)) . "/info.json";
+        $html = '<div class="card count-' . $attachment_count . '">';
+        $html .= '<img class="card-img-top openseadragon-popup" id="openseadragon' . $id . '" src="' . $image_url . '" alt="' . $title . '" data-iiif-endpoint="' . $info_json_url . '" />';
+        $html .= '<div class="card-footer gallery-caption">';
+        if ($attachment['caption']) {
+          $html .= '<small>' . $attachment['caption'] . '</small>';
+        }
+        $html .= '
             <button class="info" type="button" name="button" data-toggle="modal" data-target="#record-modal' . $id . '">
               <i class="fas fa-info-circle"></i><span class="sr-only">Information</span>
             </button>
             ';
-            $modals .= '
+        $modals .= '
             <!-- Record Modal -->
             <div class="modal fade" id="record-modal' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel' . $id . '">
               <div class="modal-dialog" role="document">
@@ -55,11 +58,11 @@
               </div>
             </div>
             ';
-            $html .= '</div>';
-            $html .= '</div>';
-            echo $html;
-            $id++;
-        };
+        $html .= '</div>';
+        $html .= '</div>';
+        echo $html;
+        $id++;
+      };
       ?>
     </div>
 

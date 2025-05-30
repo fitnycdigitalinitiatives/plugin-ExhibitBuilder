@@ -10,7 +10,7 @@ require_once dirname(__FILE__) . '/ExhibitPageTree.php';
  * @package ExhibitBuilder\View\Helper
  */
 class ExhibitBuilder_View_Helper_ExhibitPageEditTree
-    extends ExhibitBuilder_View_Helper_ExhibitPageTree
+extends ExhibitBuilder_View_Helper_ExhibitPageTree
 {
 
     /**
@@ -29,7 +29,7 @@ class ExhibitBuilder_View_Helper_ExhibitPageEditTree
      *
      * @return string
      */
-    protected function _renderListOpening()
+    protected function _renderListOpening($class = null)
     {
         return '<ul id="page-list" class="sortable">';
     }
@@ -49,10 +49,10 @@ class ExhibitBuilder_View_Helper_ExhibitPageEditTree
         $title = html_escape($page->title);
 
         $html = '<li class="page" id="page_' . $id . '">'
-              . '<div class="sortable-item">'
-              . '<a href="../edit-page/' . $id . '">' . $title . '</a>'
-              . '<a class="delete-toggle delete-element" href="#">' . __('Delete') . '</a>'
-              . '</div>';
+            . '<div class="sortable-item">'
+            . '<a href="../edit-page/' . $id . '">' . $title . '</a>'
+            . '<a class="delete-toggle delete-element" href="#">' . __('Delete') . '</a>'
+            . '</div>';
 
         if (isset($this->_pages[$page->id])) {
             $html .= '<ul>';
